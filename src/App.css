@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+    text-align: center;
+    border: 3px solid gray;
+    border-top: 0;
 }
 
 .App-logo {
@@ -37,32 +39,47 @@ float: left;
 width: 50%;
 float: left;
 }
-.header_right{
-  width: 25%;
-  float: left;
+.header_right {
+    width: 25%;
+    float: left;
+    text-align: left;
 }
-.search_box{
-  width: 500px;
+.header_right img {
+    width: 20px;
+}
+.search_box {
+    width: 500px;
+    padding: 2px 8px;
+    box-shadow: 3px -1px 5px 1px #a5a2a2;
 }
 .search_titel{
   text-align: left;
   padding: 10px;
 
 }
+
 .movie_row{
   margin-top: 20px;
 }
-.movie_box{
-  margin-left: 55px;
-  min-height: 500px;
+.movie_box {
+    margin-left: 0;
+    min-height: 380px;
+}
+.movie_box img {
+    width: 200px;
+    height: 250px;
+    border: 10px solid #ababab;
 }
 .movie_row.post-img{
   min-height: 499px;
   border: #9E9E9E 3px solid;
 }
-.movie_box p{
-  padding: 0px;
-  margin: 0px;
+.movie_box p {
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+    margin-left: 35px;
+    font-size: 14px;
 }
 .movie_details{
   text-align: left;
@@ -73,5 +90,36 @@ float: left;
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 640px) {
+  .search_box {
+    width: 220px;
+  }
+  .header_left h3{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .search_titel {
+    text-align: center;
+    font-size: 18px;
+  }
+  .movie_box p {
+    width: 35%;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 380px) {
+  .header_left h3 {
+    font-size: 16px;
+  }
+  .header_left,.header_center,.header_right {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+  }
+  .header_right{
+    text-align: center;
   }
 }
