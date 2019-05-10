@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react"; 
+import React, { Component } from "react"; 
 import {Container} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -18,6 +18,7 @@ class Movies extends Component {
       page:1,
       no:1,
       allmovies: [],
+      totalrecord:0,
       movies: [],
       searchKeyword: 'batman',
       total: 0,
@@ -53,7 +54,6 @@ class Movies extends Component {
         .then((results) => {
           console.log('current search result: ' + results);
           // Creates a User  array of Response  data
-
           if (results.data.Search) {
             const nextMovies = results.data.Search.map(movies => ({
               id:movies.imdbID,
@@ -76,6 +76,7 @@ class Movies extends Component {
                 ? nextMovies.length / this.state.itemPerPage
                 : nextMovies.length / this.state.itemPerPage + 1,
               number: 1,
+              totalrecord:results.data.totalResults,
               error: false,
             });
           } else if (results.data && results.data.Response === 'True') {
@@ -96,6 +97,7 @@ class Movies extends Component {
               allmovies: [
                 nextMovies,
               ],
+              totalrecord:results.data.totalResults,
               total: 1,
               number: 1,
               error: false,
@@ -164,7 +166,7 @@ class Movies extends Component {
 
           <h3 className="search_titel">
             {'Your Searched for: ' + (searchKeyword === undefined ? '' : searchKeyword)}
-            {', ' + allmovies.length + ' results found'}
+            {', ' +this.state.totalrecord + ' results found'}
           </h3>
 
           <div className="row movie_row">
